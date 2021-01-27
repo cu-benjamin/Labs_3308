@@ -1,0 +1,259 @@
+Microsoft Windows [Version 10.0.18363.1316]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\Ben>docker run -d -p 80:80 docker/getting-started
+Unable to find image 'docker/getting-started:latest' locally
+latest: Pulling from docker/getting-started
+188c0c94c7c5: Pull complete                                                                                             617561f33ec6: Pull complete                                                                                             7d856acdaa9c: Pull complete                                                                                             a0d3c6e28e6d: Pull complete                                                                                             af69a9b963c8: Pull complete                                                                                             0739f3815ad8: Pull complete                                                                                             7c7b75d0baf8: Pull complete                                                                                             Digest: sha256:b821569034e3b5fae03b40e64a866017067f3bf17effe185b782bdbf02179528
+Status: Downloaded newer image for docker/getting-started:latest
+de116bcc3eff8b3c51f48cd229afd525340f2d8970be21ba9fd8ce5f330ea065
+
+
+PART A - 1
+
+
+C:\Users\Ben>docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pull complete                                                                                             Digest: sha256:31b9c7d48790f0d8c50ab433d9c3b7e17666d6993084c002c2ff1ca09b96391d
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+PART A - 2
+
+
+C:\Users\Ben>docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED              STATUS                      PORTS                NAMES
+40af1f6b60a7   hello-world              "/hello"                 16 seconds ago       Exited (0) 15 seconds ago                        modest_allen
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   About a minute ago   Up About a minute           0.0.0.0:80->80/tcp   vibrant_keldysh
+
+C:\Users\Ben>docker rm ben
+Error: No such container: ben
+
+C:\Users\Ben>docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS                     PORTS                NAMES
+40af1f6b60a7   hello-world              "/hello"                 4 minutes ago   Exited (0) 4 minutes ago                        modest_allen
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes               0.0.0.0:80->80/tcp   vibrant_keldysh
+
+
+PART A - 3
+
+
+C:\Users\Ben>docker rm modest_allen
+modest_allen
+
+C:\Users\Ben>docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                NAMES
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   8 minutes ago   Up 8 minutes   0.0.0.0:80->80/tcp   vibrant_keldysh
+
+
+PART A - 4
+
+
+C:\Users\Ben>docker run --rm hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+PART A - 5
+
+
+C:\Users\Ben>docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+da7391352a9b: Pull complete                                                                                                                                         14428a6d4bcd: Pull complete                                                                                                                                         2c2d948710f2: Pull complete                                                                                                                                         Digest: sha256:c95a8e48bf88e9849f3e0f723d9f49fa12c5a00cfc6e60d2bc99d87555295e4c
+Status: Downloaded newer image for ubuntu:latest
+root@ed3388c8f89b:/# exit
+exit
+
+
+PART A - 6
+
+
+C:\Users\Ben>docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED              STATUS                      PORTS                NAMES
+ed3388c8f89b   ubuntu                   "bash"                   About a minute ago   Exited (0) 26 seconds ago                        blissful_moser
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   11 minutes ago       Up 11 minutes               0.0.0.0:80->80/tcp   vibrant_keldysh
+
+C:\Users\Ben>docker rm blissful_moser
+blissful_moser
+
+C:\Users\Ben>docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                NAMES
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   12 minutes ago   Up 12 minutes   0.0.0.0:80->80/tcp   vibrant_keldysh
+
+C:\Users\Ben>docker run -dt ubuntu bash
+ef6d0e68324366c55e32e4ddd19b33e12a375734ddf3546ed8088d6d6dd90daa
+
+C:\Users\Ben>
+C:\Users\Ben>docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                NAMES
+ef6d0e683243   ubuntu                   "bash"                   15 seconds ago   Up 14 seconds                        wonderful_banzai
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   13 minutes ago   Up 13 minutes   0.0.0.0:80->80/tcp   vibrant_keldysh
+
+C:\Users\Ben>docker rm wonderful_banzai
+Error response from daemon: You cannot remove a running container ef6d0e68324366c55e32e4ddd19b33e12a375734ddf3546ed8088d6d6dd90daa. Stop the container before attempting removal or force remove
+
+C:\Users\Ben>docker rm -f wonderful_banzai
+wonderful_banzai
+
+C:\Users\Ben>docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                NAMES
+de116bcc3eff   docker/getting-started   "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes   0.0.0.0:80->80/tcp   vibrant_keldysh
+
+C:\Users\Ben>docker rm vibrant_keldysh
+Error response from daemon: You cannot remove a running container de116bcc3eff8b3c51f48cd229afd525340f2d8970be21ba9fd8ce5f330ea065. Stop the container before attempting removal or force remove
+
+C:\Users\Ben>docker rm -f vibrant keldysh
+Error: No such container: vibrant
+Error: No such container: keldysh
+
+C:\Users\Ben>docker rm -f vibrant_keldysh
+vibrant_keldysh
+
+C:\Users\Ben>docker --help
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "C:\\Users\\Ben\\.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "C:\\Users\\Ben\\.docker\\ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "C:\\Users\\Ben\\.docker\\cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "C:\\Users\\Ben\\.docker\\key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.5.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+C:\Users\Ben>docker rm --help
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+
+Options:
+  -f, --force     Force the removal of a running container (uses SIGKILL)
+  -l, --link      Remove the specified link
+  -v, --volumes   Remove anonymous volumes associated with the container
+
+C:\Users\Ben>
